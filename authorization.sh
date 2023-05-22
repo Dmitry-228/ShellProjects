@@ -13,8 +13,8 @@ do
             if [[ $i == 3 ]]
             then
                 echo Вот ты и попался, $USER!
-                path=/home/$USER/its_you.jpg
-                fswebcam -r 640x360 -D -S $path
+                path="/home/$USER/its_you.mp4"
+                ffmpeg -f video4linux2 -s 640x480 -i /dev/video0 -t 3 $path
                 exit
             fi
             echo "Введите ваш пароль:"
